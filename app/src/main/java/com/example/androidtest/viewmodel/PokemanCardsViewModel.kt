@@ -23,7 +23,7 @@ class PokemanCardsViewModel : ViewModel() {
         pokemnDIComponent.inject(this)
     }
 
-    fun getCards() {
+      fun getCards() {
         viewModelScope.launch(Dispatchers.IO) {
             pokemonApi.getAllCards(object : PokemonResponseListener {
                 override fun onSuccess(allCards: List<PokemonCard>) {

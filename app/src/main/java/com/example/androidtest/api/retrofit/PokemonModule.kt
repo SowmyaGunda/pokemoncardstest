@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-public open class PokemonModule {
+open class PokemonModule {
     companion object {
         const val DEFAULT_API_URL = "https://api.pokemontcg.io/v1/"
         const val TIMEOUT: Long = 3000 // ms
@@ -46,8 +46,9 @@ public open class PokemonModule {
             .build()
     }
 
+    @Singleton
     @Provides
-    open fun providePokemonApi(): Pokemanapi {
-        return Pokemanapi()
-    }
+    open fun providePokemonService(retrofit: Retrofit): PokemonApiService =
+        retrofit.create(PokemonApiService::class.java)
+
 }

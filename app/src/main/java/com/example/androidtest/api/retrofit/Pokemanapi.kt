@@ -6,24 +6,24 @@ import com.example.androidtest.api.model.CardResponse
 import retrofit2.*
 import javax.inject.Inject
 
-class Pokemanapi {
+interface Pokemanapi{
+    fun getAllCards(pokemonResponseListener: PokemonResponseListener)
+}
 
-    @Inject
+class PokemanapiImpl@Inject constructor(private val pokemonApiService: PokemonApiService):Pokemanapi {
+
+    /*@Inject
     lateinit var retrofit: Retrofit
-    private lateinit var pokemonApiService: PokemonApiService
+    @Inject
+    lateinit var pokemonApiService: PokemonApiService*/
 
-    init {
-
+    /*init {
         val pokemnDIComponent: PokemonDIComponent = PokemonApplication.pokemonDIComponent
         pokemnDIComponent.inject(this)
-    }
-    constructor(){
-        pokemonApiService = retrofit.create(PokemonApiService::class.java)
-    }
+    }*/
 
-
-     fun getAllCards(pokemonResponseListener: PokemonResponseListener) {
-        val cards = pokemonApiService.getCards()
+     override fun getAllCards(pokemonResponseListener: PokemonResponseListener) {
+         val cards = pokemonApiService.getCards()
         cards.enqueue(object : Callback<CardResponse> {
             override fun onFailure(call: Call<CardResponse>, t: Throwable) {
                 pokemonResponseListener.onFailure(t)

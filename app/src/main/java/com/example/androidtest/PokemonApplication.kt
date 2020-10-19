@@ -13,16 +13,15 @@ class PokemonApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         ctx = applicationContext
-        pokemonDIComponent = initDaggerComponent()
+       pokemonDIComponent = initDaggerComponent()
 
     }
 
 
     private fun initDaggerComponent(): PokemonDIComponent {
         pokemonDIComponent = DaggerPokemonDIComponent
-                .builder()
-                .pokemonModule(PokemonModule())
-                .build()
+            .builder()
+            .applcation(this)
         return pokemonDIComponent
 
     }
