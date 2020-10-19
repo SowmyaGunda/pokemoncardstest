@@ -4,8 +4,8 @@ import androidx.lifecycle.*
 import com.example.androidtest.PokemonApplication
 import com.example.androidtest.PokemonDIComponent
 import com.example.androidtest.api.model.PokemonCard
-import com.example.androidtest.api.retrofit.Pokemanapi
-import com.example.androidtest.api.retrofit.PokemonResponseListener
+import com.example.androidtest.api.restApiClient.PokemonApi
+import com.example.androidtest.api.restApiClient.PokemonResponseListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,11 +16,11 @@ class PokemanCardsViewModel : ViewModel() {
     val cardData = MutableLiveData<PokemonCardData>()
 
     @Inject
-    lateinit var pokemonApi: Pokemanapi
+    lateinit var pokemonApi: PokemonApi
 
     init {
-        val pokemnDIComponent: PokemonDIComponent = PokemonApplication.pokemonDIComponent
-        pokemnDIComponent.inject(this)
+        val pokemonDIComponent: PokemonDIComponent = PokemonApplication.pokemonDIComponent
+        pokemonDIComponent.inject(this)
     }
 
       fun getCards() {

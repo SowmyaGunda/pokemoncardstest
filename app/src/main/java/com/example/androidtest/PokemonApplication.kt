@@ -2,7 +2,6 @@ package com.example.androidtest
 
 import android.app.Application
 import android.content.Context
-import com.example.androidtest.api.retrofit.PokemonModule
 
 class PokemonApplication : Application() {
     companion object {
@@ -20,8 +19,8 @@ class PokemonApplication : Application() {
 
     private fun initDaggerComponent(): PokemonDIComponent {
         pokemonDIComponent = DaggerPokemonDIComponent
-            .builder()
-            .applcation(this)
+            .builder().build()
+
         return pokemonDIComponent
 
     }

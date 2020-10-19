@@ -1,4 +1,4 @@
-package com.example.androidtest.api.retrofit
+package com.example.androidtest.api.restApiClient
 
 import dagger.Module
 import dagger.Provides
@@ -50,5 +50,10 @@ open class PokemonModule {
     @Provides
     open fun providePokemonService(retrofit: Retrofit): PokemonApiService =
         retrofit.create(PokemonApiService::class.java)
+
+    @Singleton
+    @Provides
+    open fun providePokemonApi(): PokemonApi =PokemonApi()
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.androidtest.api.retrofit
+package com.example.androidtest.api.restApiClient
 
 import com.example.androidtest.api.model.PokemonCard
 
