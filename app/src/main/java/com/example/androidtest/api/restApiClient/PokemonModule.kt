@@ -46,14 +46,4 @@ open class PokemonModule {
             .build()
     }
 
-    @Singleton
-    @Provides
-    open fun providePokemonService(retrofit: Retrofit): PokemonApiService =
-        retrofit.create(PokemonApiService::class.java)
-
-    @Singleton
-    @Provides
-    open fun providePokemonApi(): PokemonApi =PokemonApi()
-
-
 }

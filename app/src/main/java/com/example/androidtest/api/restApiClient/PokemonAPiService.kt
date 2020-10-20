@@ -1,4 +1,4 @@
-package com.example.androidtest.api.restApiClient
+package com.example.androidtest.api.retrofit
 
 import com.example.androidtest.api.model.CardResponse
 import retrofit2.Call

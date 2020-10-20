@@ -1,14 +1,15 @@
 package com.example.androidtest
 
-import com.example.androidtest.api.restApiClient.PokemonApi
 import com.example.androidtest.api.restApiClient.PokemonModule
-import com.example.androidtest.viewmodel.PokemanCardsViewModel
+import com.example.androidtest.viewmodel.PokemonCardsViewModel
+import com.example.androidtest.viewmodel.ViewModelFactory
 import dagger.Component
 import javax.inject.Singleton
+
 
 @Singleton
 @Component(modules = [PokemonModule::class])
 interface PokemonDIComponent {
-    fun inject(pokemonApi: PokemonApi)
-    fun inject(pokemonCardsViewModel: PokemanCardsViewModel)
+    fun inject(pokemonCardsViewModel: PokemonCardsViewModel)
+    fun inject(viewModelFactory: ViewModelFactory)
 }

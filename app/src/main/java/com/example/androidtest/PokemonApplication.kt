@@ -6,22 +6,17 @@ import android.content.Context
 class PokemonApplication : Application() {
     companion object {
         var ctx: Context? = null
-        lateinit var pokemonDIComponent: PokemonDIComponent
+        //lateinit var pokemonDIComponent: PokemonDIComponent
     }
 
     override fun onCreate() {
         super.onCreate()
         ctx = applicationContext
-       pokemonDIComponent = initDaggerComponent()
+        //pokemonDIComponent = initDaggerComponent()
 
     }
 
-
-    private fun initDaggerComponent(): PokemonDIComponent {
-        pokemonDIComponent = DaggerPokemonDIComponent
-            .builder().build()
-
-        return pokemonDIComponent
-
-    }
+    /*private fun initDaggerComponent(): PokemonDIComponent {
+         return DaggerPokemonDIComponent.create()
+     }*/
 }

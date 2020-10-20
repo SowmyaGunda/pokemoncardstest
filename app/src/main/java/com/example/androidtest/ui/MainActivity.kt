@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidtest.R
 import com.example.androidtest.api.model.PokemonCard
-import com.example.androidtest.viewmodel.PokemanCardsViewModel
 import com.example.androidtest.viewmodel.PokemonCardData
+import com.example.androidtest.viewmodel.PokemonCardsViewModel
+import com.example.androidtest.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
+    lateinit var  pokemonCardsViewModel : PokemonCardsViewModel
     private val observable = Observer<PokemonCardData>{
         println("sowmya"+ (it.cards?.size ?: 0))
         if(it.throwable == null) {
@@ -40,15 +42,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getViewModel().cardData.observe(this, observable)
-        getCards()
+        var viewModelFactory = ViewModelFactory()
+        pokemonCardsViewModel = ViewModelProvider(this,viewModelFactory).get(PokemonCardsViewModel::class.java)
+        pokemonCardsViewModel.cardData.observe(this, observable)
+        pokemonCardsViewModel.getCards()
         recyclerView = findViewById<RecyclerView>(R.id.pokemon_list)
         recyclerView.setLayoutManager( LinearLayoutManager(this));
     }
-    private fun getViewModel() : PokemanCardsViewModel{
-        return ViewModelProvider(this).get(PokemanCardsViewModel::class.java)
-    }
-    private fun getCards(){
-        getViewModel().getCards()
-    }
+
 }
